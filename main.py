@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from apm.error_handler import global_exception_handler
 from api.routes import router
+from api.integration_config import router as integration_router
 import logging
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -17,6 +18,7 @@ app.add_middleware(
 app.add_exception_handler(Exception, global_exception_handler)
 
 app.include_router(router)
+app.include_router(integration_router)
 
 logging.basicConfig(level=logging.INFO)
 
