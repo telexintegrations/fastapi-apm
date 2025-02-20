@@ -15,7 +15,7 @@ integration_json = {
         },
         "is_active": True,
         "integration_type": "modifier",
-        "integration_category": "Performance & Monitoring",
+        "integration_category": "Performance Monitoring",
         "key_features": [
             "Captures all unhandled exceptions",
             "Logs errors asynchronously",
