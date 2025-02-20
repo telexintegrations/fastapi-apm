@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  fastapi:
+    build: .
+    container_name: fastapi_apm
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    restart: always
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx_reverse_proxy
+    depends_on:
+      - fastapi
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - "80:80"
+    restart: always
