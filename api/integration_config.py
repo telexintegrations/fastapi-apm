@@ -1,7 +1,14 @@
+import os
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse
 
 router = APIRouter()
+
+TARGET_URL = os.getenv(
+    "TELEX_TARGET_URL",
+    "https://ping.telex.im/v1/webhooks/0195184b-daf9-7f90-8266-30fff9bf7591",
+)
+TICK_URL = os.getenv("TELEX_TICK_URL", "https://fastapi-apm.onrender.com")
 
 integration_json = {
     "data": {
@@ -32,8 +39,8 @@ integration_json = {
                 "options": ["INFO", "WARNING", "ERROR", "CRITICAL"],
             }
         ],
-        "target_url": "https://ping.telex.im/v1/webhooks/0195184b-daf9-7f90-8266-30fff9bf7591",
-        "tick_url": "https://fastapi-apm.onrender.com/",
+        "target_url": TARGET_URL,
+        "tick_url": TICK_URL,
     }
 }
 
