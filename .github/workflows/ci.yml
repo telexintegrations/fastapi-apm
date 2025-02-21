@@ -32,6 +32,8 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run Pytest
+        env:
+          TELEX_WEBHOOK_URL: ${{ secrets.TELEX_WEBHOOK_URL }}
         run: |
           source venv/bin/activate
           PYTHONPATH=. pytest -v
