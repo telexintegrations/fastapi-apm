@@ -52,7 +52,12 @@ def _log_error(
         f"📄 *Stack Trace (Last 3 Lines):*\n" + "\n".join(stack_trace.splitlines()[-3:])
     )
 
-    with open("apm/logs/apm.log", "a") as log_file:
+    log_dir = "apm/logs"
+    os.makedirs(log_dir, exist_ok=True)
+
+    log_file_path = os.path.join(log_dir, "apm.log")
+
+    with open(log_file_path, "a") as log_file:
         log_entry = {
             "timestamp": timestamp,
             "route": route,
