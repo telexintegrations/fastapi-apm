@@ -95,6 +95,11 @@ fastapi-apm/
 uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
+## Testing
+
+To trigger an error, you can send a GET request to <https://fastapi-apm.onrender.com/test-fail> and the error will be caught and get logged in the `fastapi-apm` channel on Telex test organization
+![alt text](image.png)
+
 ## Deployment
 
 ### Using Docker and Docker Compose
